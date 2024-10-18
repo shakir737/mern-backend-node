@@ -66,6 +66,9 @@ app.use(
     threshold: 0,
   })
 );
+app.get("/", (req, res) => {
+  res.send("Hello World, from express");
+});
 app.use("/api/user", authRouter);
 app.use("/api/product", productRouter);
 app.use("/api/blog", blogRouter);
