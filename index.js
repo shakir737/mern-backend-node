@@ -66,7 +66,7 @@ app.use(
     threshold: 0,
   })
 );
-app.get("/", (req, res) => {
+app.use("/", (req, res) => {
   res.send("Hello World, from express");
 });
 app.use("/api/user", authRouter);
