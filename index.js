@@ -34,7 +34,7 @@ cloudinary.config({
   api_secret: "2ajdov-hm1YUh2R5EypgM2Jf1_Y",
 });
 const whitelist = [
-  "http://localhost:3000",
+  "http://localhost:4000",
   "http://localhost:5173",
   "http://localhost:5174",
   "http://3.90.226.193:4000/",
