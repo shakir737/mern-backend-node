@@ -69,10 +69,10 @@ app.use(
     threshold: 0,
   })
 );
-app.use("/", (req, res) => {
+app.get("/", (req, res) => {
   res.send("Hello World, from express");
 });
-app.use(
+app.get(
   "/.well-known/pki-validation/7D4CFBD31F87F804D883F6644403CCB2.txt",
   (req, res) => {
     res.sendFile(
