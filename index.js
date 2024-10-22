@@ -1,12 +1,19 @@
 const bodyParser = require("body-parser");
 const express = require("express");
-
+const fs = require("fs");
+const https = require("https");
 const compression = require("compression");
 const dbConnect = require("./config/dbConnect");
 const { notFound, errorHandler } = require("./middlewares/errorHandler");
 const app = express();
 const dotenv = require("dotenv").config();
 const PORT = 4000;
+const key = fs.readFileSync("private.key");
+const certificate = fs.readFileSync("certificate.crt");
+const credentials = {
+  key,
+  certificate,
+};
 const authRouter = require("./routes/authRoute");
 const productRouter = require("./routes/productRoute");
 const blogRouter = require("./routes/blogRoute");
@@ -116,3 +123,5 @@ app.use(errorHandler);
 app.listen(PORT, () => {
   console.log(`Server is running  at PORT ${PORT}`);
 });
+const httpsServer = https.createServer(credentials, app);
+httpsServer.listen(4001);
