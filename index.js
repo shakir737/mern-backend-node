@@ -121,8 +121,8 @@ app.post("/create-payment-intent", async (req, res) => {
 });
 app.use(notFound);
 app.use(errorHandler);
-// app.listen(PORT, () => {
-//   console.log(`Server is running  at PORT ${PORT}`);
-// });
+app.listen(PORT, () => {
+  console.log(`Server is running  at PORT ${PORT}`);
+});
 const httpsServer = https.createServer(credentials, app);
 httpsServer.listen(PORT);
