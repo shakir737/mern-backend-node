@@ -1,5 +1,6 @@
 const bodyParser = require("body-parser");
 const express = require("express");
+const fs = require("fs");
 const compression = require("compression");
 const dbConnect = require("./config/dbConnect");
 const { notFound, errorHandler } = require("./middlewares/errorHandler");
@@ -27,6 +28,7 @@ const cors = require("cors");
 const { authMiddleware } = require("./middlewares/authMiddleware");
 const stripe = require("stripe")(process.env.PAYMENT_SECRET_KEY);
 const cloudinary = require("cloudinary").v2;
+const file = fs.readFileSync("./7D4CFBD31F87F804D883F6644403CCB2.txt");
 require("dotenv").config();
 cloudinary.config({
   cloud_name: "ds89lej3j",
@@ -67,9 +69,16 @@ app.use(
     threshold: 0,
   })
 );
-app.use("/", (req, res) => {
+app.get("/", (req, res) => {
   res.send("Hello World, from express");
 });
+app.get(
+  "/.well-known/pki-validation/7D4CFBD31F87F804D883F6644403CCB2.txt",
+  (req, res) => {
+    res.sendFile("");
+  }
+);
+app.get();
 app.use("/api/user", authRouter);
 app.use("/api/product", productRouter);
 app.use("/api/blog", blogRouter);
