@@ -8,7 +8,7 @@ const { notFound, errorHandler } = require("./middlewares/errorHandler");
 const app = express();
 const dotenv = require("dotenv").config();
 const PORT = 4000;
-const httpPort = 4001;
+const httpsPort = 4001;
 const key = fs.readFileSync(`private.key`);
 const certificate = fs.readFileSync(`certificate.crt`);
 const credentials = {
@@ -125,4 +125,4 @@ app.listen(PORT, () => {
   console.log(`Server is running  at PORT ${PORT}`);
 });
 const httpsServer = https.createServer(credentials, app);
-httpsServer.listen(PORT);
+httpsServer.listen(httpsPort);
