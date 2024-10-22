@@ -9,8 +9,8 @@ const app = express();
 const dotenv = require("dotenv").config();
 const PORT = 4000;
 const httpPort = 4001;
-const key = fs.readFileSync("/root/mern-backend-node/private.key");
-const certificate = fs.readFileSync("/root/mern-backend-node/certificate.crt");
+const key = fs.readFileSync("private.key");
+const certificate = fs.readFileSync("certificate.crt");
 const credentials = {
   key,
   certificate,
@@ -121,8 +121,8 @@ app.post("/create-payment-intent", async (req, res) => {
 });
 app.use(notFound);
 app.use(errorHandler);
-app.listen(PORT, () => {
-  console.log(`Server is running  at PORT ${PORT}`);
-});
+// app.listen(PORT, () => {
+//   console.log(`Server is running  at PORT ${PORT}`);
+// });
 const httpsServer = https.createServer(credentials, app);
 httpsServer.listen(httpPort);
