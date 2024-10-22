@@ -75,7 +75,9 @@ app.get("/", (req, res) => {
 app.get(
   "/.well-known/pki-validation/7D4CFBD31F87F804D883F6644403CCB2.txt",
   (req, res) => {
-    res.sendFile("");
+    res.sendFile(
+      "/root/mern-backend-node/7D4CFBD31F87F804D883F6644403CCB2.txt"
+    );
   }
 );
 app.get();
