@@ -50,11 +50,9 @@ cloudinary.config({
   api_secret: "2ajdov-hm1YUh2R5EypgM2Jf1_Y",
 });
 const whitelist = [
-  "http://localhost:4000",
-  "http://localhost:5173",
-  "http://localhost:5174",
-  "http://3.90.226.193:4000/",
+  "http://54.236.99.231",
   "http://54.236.99.231/",
+  "http://54.236.99.231:4000",
 ];
 // app.options(cors());
 const corsOptions = {
@@ -79,7 +77,7 @@ app.use(morgan("dev"));
 app.use(bodyParser.json({ limit: "50mb" }));
 app.use(bodyParser.urlencoded({ limit: "50mb", extended: false }));
 app.use(cookieParser());
-app.use(cors(c));
+app.use(cors(corsOptions));
 app.use(
   compression({
     level: 6,
