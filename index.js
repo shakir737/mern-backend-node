@@ -54,6 +54,7 @@ const whitelist = [
   "http://54.236.99.231/",
   "http://54.236.99.231:4000",
   "https://main.d1bygvczrsspbr.amplifyapp.com/",
+  "https://yxtcbvxrz9.execute-api.us-east-1.amazonaws.com/prod",
 ];
 // app.options(cors());
 const corsOptions = {
