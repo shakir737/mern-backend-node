@@ -56,7 +56,7 @@ const whitelist = [
   "http://3.90.226.193:4000/",
   "http://54.236.99.231/",
 ];
-app.options(cors());
+// app.options(cors());
 const corsOptions = {
   credentials: true,
   origin: (origin, callback) => {
@@ -79,7 +79,7 @@ app.use(morgan("dev"));
 app.use(bodyParser.json({ limit: "50mb" }));
 app.use(bodyParser.urlencoded({ limit: "50mb", extended: false }));
 app.use(cookieParser());
-app.use(cors());
+app.use(cors(c));
 app.use(
   compression({
     level: 6,
