@@ -38,6 +38,7 @@ const uploadRouter = require("./routes/uploadRoute");
 const cookieParser = require("cookie-parser");
 const morgan = require("morgan");
 const cors = require("cors");
+import helmet from "helmet";
 const { authMiddleware } = require("./middlewares/authMiddleware");
 const stripe = require("stripe")(process.env.PAYMENT_SECRET_KEY);
 const cloudinary = require("cloudinary").v2;
@@ -67,16 +68,18 @@ const corsOptions = {
   },
 };
 
-app.use(cors());
-
 // app.use(cors({
 //   origin: "http://localhost:3001"
 // }) );
-app.use(morgan("dev"));
+
 dbConnect();
+app.use(helmet());
+app.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin" }));
+app.use(morgan("dev"));
 app.use(bodyParser.json({ limit: "50mb" }));
-app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
+app.use(bodyParser.urlencoded({ limit: "50mb", extended: false }));
 app.use(cookieParser());
+app.use(cors());
 app.use(
   compression({
     level: 6,
