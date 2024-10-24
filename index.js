@@ -58,7 +58,6 @@ const whitelist = [
 ];
 // app.options(cors());
 const corsOptions = {
-  credentials: true,
   origin: (origin, callback) => {
     if (true) {
       console.log(true);
@@ -80,7 +79,7 @@ app.use(morgan("dev"));
 app.use(bodyParser.json({ limit: "50mb" }));
 app.use(bodyParser.urlencoded({ limit: "50mb", extended: false }));
 app.use(cookieParser());
-app.use(cors(corsOptions));
+app.use(cors());
 app.use(
   compression({
     level: 6,
