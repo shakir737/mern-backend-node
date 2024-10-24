@@ -38,7 +38,7 @@ const uploadRouter = require("./routes/uploadRoute");
 const cookieParser = require("cookie-parser");
 const morgan = require("morgan");
 const cors = require("cors");
-import helmet from "helmet";
+const helmet = require("helmet");
 const { authMiddleware } = require("./middlewares/authMiddleware");
 const stripe = require("stripe")(process.env.PAYMENT_SECRET_KEY);
 const cloudinary = require("cloudinary").v2;
@@ -61,6 +61,7 @@ const corsOptions = {
   credentials: true,
   origin: (origin, callback) => {
     if (true) {
+      console.log(true);
       callback(null, true);
     } else {
       callback(new Error("Not allowed by CORS"));
@@ -86,6 +87,19 @@ app.use(
     threshold: 0,
   })
 );
+app.all("*", function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "URLs to trust of allow");
+  res.header(
+    "Access-Control-Allow-Methods",
+    "GET, POST, OPTIONS, PUT, PATCH, DELETE"
+  );
+  res.header("Access-Control-Allow-Headers", "Content-Type");
+  if ("OPTIONS" == req.method) {
+    res.sendStatus(200);
+  } else {
+    next();
+  }
+});
 app.get("/", (req, res) => {
   res.send("Hello World, from express");
 });
