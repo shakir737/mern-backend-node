@@ -2,8 +2,6 @@ const bodyParser = require("body-parser");
 const express = require("express");
 const fs = require("fs");
 const https = require("https");
-// const keyFile = require("./private.Key");
-// const certificateFile = require("./certificate.crt");
 const compression = require("compression");
 const dbConnect = require("./config/dbConnect");
 const { notFound, errorHandler } = require("./middlewares/errorHandler");
@@ -68,9 +66,11 @@ const corsOptions = {
   },
 };
 
-// app.use(cors({
-//   origin: "http://localhost:3001"
-// }) );
+app.use(
+  cors({
+    origin: "https://main.d1bygvczrsspbr.amplifyapp.com/",
+  })
+);
 
 dbConnect();
 app.use(helmet());
@@ -79,7 +79,7 @@ app.use(morgan("dev"));
 app.use(bodyParser.json({ limit: "50mb" }));
 app.use(bodyParser.urlencoded({ limit: "50mb", extended: false }));
 app.use(cookieParser());
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(
   compression({
     level: 6,
