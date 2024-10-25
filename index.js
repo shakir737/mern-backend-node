@@ -81,7 +81,7 @@ app.use(bodyParser.urlencoded({ limit: "50mb", extended: false }));
 app.use(cookieParser());
 app.use(
   cors({
-    origin: "https://main.d1bygvczrsspbr.amplifyapp.com/:1",
+    origin: "https://main.d1bygvczrsspbr.amplifyapp.com",
   })
 );
 app.use(
