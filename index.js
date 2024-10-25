@@ -79,26 +79,30 @@ app.use(morgan("dev"));
 app.use(bodyParser.json({ limit: "50mb" }));
 app.use(bodyParser.urlencoded({ limit: "50mb", extended: false }));
 app.use(cookieParser());
-app.use(cors(corsOptions));
+app.use(
+  cors({
+    origin: "https://main.d1bygvczrsspbr.amplifyapp.com/:1",
+  })
+);
 app.use(
   compression({
     level: 6,
     threshold: 0,
   })
 );
-app.all("*", function (req, res, next) {
-  res.header("Access-Control-Allow-Origin", "URLs to trust of allow");
-  res.header(
-    "Access-Control-Allow-Methods",
-    "GET, POST, OPTIONS, PUT, PATCH, DELETE"
-  );
-  res.header("Access-Control-Allow-Headers", "Content-Type");
-  if ("OPTIONS" == req.method) {
-    res.sendStatus(200);
-  } else {
-    next();
-  }
-});
+// app.all("*", function (req, res, next) {
+//   res.header("Access-Control-Allow-Origin", "URLs to trust of allow");
+//   res.header(
+//     "Access-Control-Allow-Methods",
+//     "GET, POST, OPTIONS, PUT, PATCH, DELETE"
+//   );
+//   res.header("Access-Control-Allow-Headers", "Content-Type");
+//   if ("OPTIONS" == req.method) {
+//     res.sendStatus(200);
+//   } else {
+//     next();
+//   }
+// });
 app.get("/", (req, res) => {
   res.send("Hello World, from express");
 });
