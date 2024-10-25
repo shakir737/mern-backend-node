@@ -66,11 +66,11 @@ const corsOptions = {
   },
 };
 
-app.use(
-  cors({
-    origin: "https://main.d1bygvczrsspbr.amplifyapp.com/:1",
-  })
-);
+// app.use(
+//   cors({
+//     origin: "https://main.d1bygvczrsspbr.amplifyapp.com/:1",
+//   })
+// );
 
 dbConnect();
 app.use(helmet());
