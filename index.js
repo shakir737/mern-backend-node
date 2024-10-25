@@ -48,10 +48,8 @@ cloudinary.config({
   api_secret: "2ajdov-hm1YUh2R5EypgM2Jf1_Y",
 });
 const whitelist = [
-  "http://54.236.99.231",
-  "http://54.236.99.231/",
-  "http://54.236.99.231:4000",
   "https://main.d1bygvczrsspbr.amplifyapp.com",
+  "https://main.d1bygvczrsspbr.amplifyapp.com/:1",
 ];
 // app.options(cors());
 const corsOptions = {
