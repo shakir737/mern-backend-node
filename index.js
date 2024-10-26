@@ -34,9 +34,9 @@ cloudinary.config({
   api_secret: "2ajdov-hm1YUh2R5EypgM2Jf1_Y",
 });
 const whitelist = [
-  "https://main.d1bygvczrsspbr.amplifyapp.com/",
-  "https://main.d1bygvczrsspbr.amplifyapp.com",
-  "https://main.d1bygvczrsspbr.amplifyapp.com/:1",
+  "http://localhost:3000",
+  "http://localhost:5173",
+  "http://localhost:5174",
 ];
 app.options(cors());
 const corsOptions = {
