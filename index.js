@@ -54,7 +54,7 @@ const whitelist = [
 // app.options(cors());
 const corsOptions = {
   origin: (origin, callback) => {
-    if (true) {
+    if (whitelist.indexOf(origin) !== -1 || !origin) {
       console.log(true);
       callback(null, true);
     } else {
