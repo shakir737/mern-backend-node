@@ -1,4 +1,4 @@
-// const bodyParser = require("body-parser");
+const bodyParser = require("body-parser");
 const express = require("express");
 const compression = require("compression");
 const dbConnect = require("./config/dbConnect");
@@ -37,6 +37,8 @@ const whitelist = [
   "https://main.d1bygvczrsspbr.amplifyapp.com/",
   "https://main.d1bygvczrsspbr.amplifyapp.com/:1",
   "https://main.d1bygvczrsspbr.amplifyapp.com",
+  "http://localhost:3000/",
+  "http://localhost:3000",
 ];
 app.options(cors());
 const corsOptions = {
@@ -57,8 +59,8 @@ app.use(cors(corsOptions));
 // }) );
 app.use(morgan("dev"));
 dbConnect();
-// app.use(bodyParser.json({ limit: "50mb" }));
-// app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
+app.use(bodyParser.json({ limit: "50mb" }));
+app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
 app.use(cookieParser());
 app.use(
   compression({
