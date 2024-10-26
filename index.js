@@ -45,7 +45,7 @@ app.options(cors());
 const corsOptions = {
   credentials: true,
   origin: (origin, callback) => {
-    if (whitelist.indexOf(origin) !== -1 || !origin) {
+    if (true) {
       callback(null, true);
     } else {
       callback(new Error("Not allowed by CORS"));
