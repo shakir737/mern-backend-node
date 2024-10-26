@@ -40,6 +40,7 @@ const whitelist = [
   "http://localhost:3000/",
   "http://localhost:3000",
   "https://yxtcbvxrz9.execute-api.us-east-1.amazonaws.com",
+  "https://qeps9wo4y1.execute-api.us-east-1.amazonaws.com",
 ];
 app.options(cors());
 const corsOptions = {
