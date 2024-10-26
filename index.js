@@ -1,4 +1,4 @@
-// const bodyParser = require("body-parser");
+const bodyParser = require("body-parser");
 const express = require("express");
 const compression = require("compression");
 const dbConnect = require("./config/dbConnect");
@@ -60,8 +60,8 @@ app.use(cors(corsOptions));
 // }) );
 app.use(morgan("dev"));
 dbConnect();
-// app.use(bodyParser.json({ limit: "50mb" }));
-// app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
+app.use(bodyParser.json({ limit: "50mb" }));
+app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
 app.use(cookieParser());
 app.use(
   compression({
