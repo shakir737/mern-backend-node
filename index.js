@@ -49,7 +49,8 @@ cloudinary.config({
 });
 const whitelist = [
   "https://main.d1bygvczrsspbr.amplifyapp.com",
-  "https://main.d1bygvczrsspbr.amplifyapp.com/:1",
+  "https://main.d1bygvczrsspbr.amplifyapp.com/",
+  "http://localhost:3000/",
 ];
 // app.options(cors());
 const corsOptions = {
@@ -63,39 +64,20 @@ const corsOptions = {
   },
 };
 
-// app.use(
-//   cors({
-//     origin: "https://main.d1bygvczrsspbr.amplifyapp.com/:1",
-//   })
-// );
-
-dbConnect();
-app.use(helmet());
-app.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin" }));
-app.use(morgan("dev"));
-app.use(bodyParser.json({ limit: "50mb" }));
-app.use(bodyParser.urlencoded({ limit: "50mb", extended: false }));
-app.use(cookieParser());
 app.use(cors(corsOptions));
+
+app.use(morgan("dev"));
+dbConnect();
+app.use(bodyParser.json({ limit: "50mb" }));
+app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
+app.use(cookieParser());
 app.use(
   compression({
     level: 6,
     threshold: 0,
   })
 );
-// app.all("*", function (req, res, next) {
-//   res.header("Access-Control-Allow-Origin", "URLs to trust of allow");
-//   res.header(
-//     "Access-Control-Allow-Methods",
-//     "GET, POST, OPTIONS, PUT, PATCH, DELETE"
-//   );
-//   res.header("Access-Control-Allow-Headers", "Content-Type");
-//   if ("OPTIONS" == req.method) {
-//     res.sendStatus(200);
-//   } else {
-//     next();
-//   }
-// });
+
 app.get("/", (req, res) => {
   res.send("Hello World, from express");
 });
